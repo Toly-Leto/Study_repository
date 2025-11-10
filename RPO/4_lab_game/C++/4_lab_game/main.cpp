@@ -5,7 +5,7 @@
 
 // Global constants
 const int PADDLE_WIDTH = 12;
-const int BALL_DELAY_MS = 100;
+const int BALL_DELAY_MS = 10;
 
 class Paddle {
 public:
@@ -170,7 +170,7 @@ protected:
         ball.update();
         ball.handleWallCollision();
         ball.handlePaddleCollision(player1, 1);
-        ball.handlePaddleCollision(player2, -1);
+        ball.handlePaddleCollision(player2, -2);
         ball.checkScoring(score1, score2);
     }
 
