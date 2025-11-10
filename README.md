@@ -1,2 +1,2 @@
 # Study_repository
-This is for studying
+Отдельные папки можно скачать, например, через https://downgit.github.io/
