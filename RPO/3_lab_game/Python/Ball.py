@@ -17,8 +17,8 @@ class Ball:
         self.lst_of_mines = []
 
     def start_position(self):
-        self.rect.x = 640
-        self.rect.y = 360
+        self.rect.x = screen_w/2
+        self.rect.y = screen_h/2
         self.speed_x = random.choice([-1, 1]) * speed_x
         self.speed_y = random.choice([-1, 1]) * speed_y
 
@@ -47,19 +47,19 @@ class Ball:
         if self.rect.colliderect(red_player.rect):
             self.speed_x *= -1
             self.last_tuch = red_player.color
-            new_mine = Mine(self.last_tuch)
+            new_mine = Mine(self.last_tuch, blue_bomb)
             self.lst_of_mines.append(new_mine)
 
         if self.rect.colliderect(blue_player.rect):
             self.speed_x *= -1
             self.last_tuch = blue_player.color
-            new_mine = Mine(self.last_tuch)
+            new_mine = Mine(self.last_tuch, red_bomb)
             self.lst_of_mines.append(new_mine)
 
 
     def check_colis_mine(self, red_player, blue_player):
         for mine in self.lst_of_mines:
-            if self.rect.colliderect(mine) and mine.color != self.last_tuch:
+            if self.rect.colliderect(mine.bomb_rect) and mine.color != self.last_tuch:
                 if self.last_tuch == 'red':
                     blue_player.score += 1
 

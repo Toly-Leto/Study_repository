@@ -9,9 +9,9 @@ from Mine import Mine
 
 pygame.init()
 game_display = Screen(screen_w, screen_h, caption)
-ball = Ball(*ball_size, 'white', screen_w, screen_h)
-blue_player = Player(*blue_paddle_date, screen_h, 'blue', pygame.K_w, pygame.K_s)
-red_player = Player(*red_paddle_date, screen_h, 'red', pygame.K_UP, pygame.K_DOWN)
+ball = Ball(*ball_size, ball_color, screen_w, screen_h)
+blue_player = Player(*blue_paddle_date, screen_h, color_player_1, pygame.K_w, pygame.K_s)
+red_player = Player(*red_paddle_date, screen_h, color_player_2, pygame.K_UP, pygame.K_DOWN)
 clock = pygame.time.Clock()
 
 while True:
@@ -24,6 +24,6 @@ while True:
         blue_player.check_push(enent)
         red_player.check_push(enent)
 
-    game_display.update(ball, blue_player, red_player, red_player.score, blue_player.score)
+    game_display.update(ball, blue_player, red_player)
     pygame.display.update()
     clock.tick(60)
