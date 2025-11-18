@@ -102,7 +102,7 @@ def table():
           f'{"Количество операций ":25} {"Количество перестановок":25} {"С/M":25}| ')
     print(f'|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|')
 
-    times = [lst[0][1], lst[1][1], lst[2][1], lst[3][1], lst[4][1]]
+    times = [lst[i][1] for i in range(len(lst))]
     min_time = min(times)
     for line in lst:
         name, timer, lst_ = line
