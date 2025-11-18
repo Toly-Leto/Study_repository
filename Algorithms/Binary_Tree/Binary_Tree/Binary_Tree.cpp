@@ -81,6 +81,9 @@ void freeTree(Node* node) {
 }
 
 
+
+
+
 int main() {
     setlocale(LC_ALL, "rus");
     int N;
@@ -94,6 +97,7 @@ int main() {
 
 
     Node* root = buildPerfectlyBalancedTree(N, 0);
+    
 
     cout << "\nДерево до обмена дочерних вершин:" << endl;
     printTree(root, 0);

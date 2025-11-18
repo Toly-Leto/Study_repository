@@ -13,6 +13,11 @@ def show_time(func):
         return func.__name__, timer, result
     return wrapper
 
+
+@show_time
+def Py_sort(lst):
+    return sorted(lst), 1, 1
+
 @show_time
 def Boble_sort(lst):
     C = 0
@@ -90,14 +95,14 @@ def quicksort(arr):
 
 
 def table():
-    lst = [Boble_sort(N), Merge_sort(N), selection_sort(N), Quick_sort(N)]
+    lst = [Boble_sort(list(N)), Merge_sort(list(N)), selection_sort(list(N)), Quick_sort(list(N)), Py_sort(list(N))]
 
     print(f' {"_" * 25:25} {"_" * 25:25} {"_" * 25:25} {"_" * 25:25} {"_" * 25:25} {"_" * 25:25} {"_" * 25:25} ')
     print(f'|{"Название алгоритма":25}|{"Время выполнения (сек)":25}|{"Относительная скорость":25}|{"Корректность":25}|'
           f'{"Количество операций ":25} {"Количество перестановок":25} {"С/M":25}| ')
     print(f'|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|{"-"*25:25}|')
 
-    times = [lst[0][1], lst[1][1], lst[2][1], lst[3][1]]
+    times = [lst[0][1], lst[1][1], lst[2][1], lst[3][1], lst[4][1]]
     min_time = min(times)
     for line in lst:
         name, timer, lst_ = line

@@ -1,13 +1,13 @@
 import pygame
 
-screen_w = 1280
-screen_h = 720
+screen_w = 1000
+screen_h = 500
 caption = "PONG GAME!"
-paddle_h = 150
-paddle_w = 15
+paddle_h = 200
+paddle_w = 20
 blue_paddle_date = (0, screen_h/2 - paddle_h/2, paddle_w, paddle_h)
 red_paddle_date = (screen_w - paddle_w, screen_h/2 - paddle_h/2, paddle_w, paddle_h)
-ball_size = (30, 30)
+ball_size = (40, 40)
 mine_len = 65
 speed_x = 10
 speed_y = 8
@@ -18,4 +18,4 @@ color_player_2 = 'red'
 red_bomb = pygame.image.load('imeges/red_bomb (1).png')
 blue_bomb = pygame.image.load('imeges/blue_bomb (1).png')
 text_color = 'black'
-score_max_number = 3
+score_max_number = 4
