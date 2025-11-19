@@ -28,7 +28,7 @@ class Ball:
 
 
     def check_colisions(self, red_player, blue_player, ball):
-        if self.rect.x + self.width> self.screen_w:
+        if self.rect.x + self.width > self.screen_w:
             red_player.score += 1
             self.start_position()
             self.lst_of_mines = []
@@ -74,4 +74,3 @@ class Ball:
 
     def draw(self, surface):
         pygame.draw.ellipse(surface, self.color, self.rect)
-

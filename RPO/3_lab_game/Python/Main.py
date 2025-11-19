@@ -15,6 +15,7 @@ blue_player = Player(*blue_paddle_date, screen_h, color_player_1, pygame.K_w, py
 red_player = Player(*red_paddle_date, screen_h, color_player_2, pygame.K_UP, pygame.K_DOWN)
 clock = pygame.time.Clock()
 
+
 while True:
 
     game_display.screen.fill(backgroung)
