@@ -1,42 +1,41 @@
-import sys
 import pygame
-
-from Config import *
+from Consts import *
+import sys
 
 class Screen:
     def __init__(self):
         self.screen = pygame.display.set_mode((screen_w, screen_h))
-        self.font = pygame.font.Font(None, 150)
+        self.image = pygame.transform.scale(background, (screen_w, screen_h))
         pygame.display.set_caption(caption)
-        self.background = pygame.transform.scale(background, (screen_w, screen_h))
+        self.font = pygame.font.Font(None, 150)
+
+    def draw_players(self, ball):
+        for player in ball.lst_of_teammate:
+            player.draw(self.screen)
 
 
-    def draw_players(self, lst_of_players):
-        for player in lst_of_players:
-            self.screen.blit(player.image, player.rect)
-
-
-    def draw(self, ball, screen, player_1, player_2):
-        pygame.draw.aaline(self.screen, 'white', (screen_w / 2, 0), (screen_w / 2, screen_h))
-        ball.refraction()
+    def draw(self, ball, blue_player, red_player):
+        ball.draw(self.screen)
         ball.move()
-        ball.draw(screen)
+        ball.refration()
+        ball.check_colisions(blue_player, red_player)
+        ball.check_push_players()
 
-        ball.check_colisions(player_1, player_2)
-        player_1.move()
-        player_2.move()
+        red_player.draw(self.screen)
+        blue_player.draw(self.screen)
 
-        player_1.draw(screen)
-        player_2.draw(screen)
-        self.draw_players(ball.lst_of_players)
+        blue_player.move()
+        red_player.move()
 
-        player1_score_surface = self.font.render(str(player_1.score), True, 'black')
-        player2_score_surface = self.font.render(str(player_2.score), True, 'black')
+        self.draw_players(ball)
+        self.show_score(blue_player, red_player)
+
+    def show_score(self, blue_player, red_player):
+        player1_score_surface = self.font.render(str(blue_player.score), True, 'black')
+        player2_score_surface = self.font.render(str(red_player.score), True, 'black')
 
         self.screen.blit(player1_score_surface, (screen_w / 4, 20))
         self.screen.blit(player2_score_surface, (3 * screen_w / 4, 20))
-
-        ball.check_colis_players(player_1, player_2)
 
     def game_over(self, red_player, blue_player):
         if red_player.score == game_over_score or blue_player.score == game_over_score:
@@ -51,4 +50,3 @@ class Screen:
             pygame.time.wait(5000)
             pygame.quit()
             sys.exit()
-
